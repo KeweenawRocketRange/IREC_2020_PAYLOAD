@@ -8,10 +8,11 @@ int main(){
 
 	int mpuAddr = MPUADDR;	
 	setup(mpuAddr);
-	int baudRate = 9600;
+
+	char* cpOut = ((char*)malloc(sizeof(char)*83));
 	for(int i = 0; i < 1; i++){
 		
-		NMEA_STRING(baudRate);
+		printf("%s\n", NMEA_STRING(cpOut));
 		//printf("Accel: %f\n", read_word_2c(0x3B)/16384.0); 
 		
 	}

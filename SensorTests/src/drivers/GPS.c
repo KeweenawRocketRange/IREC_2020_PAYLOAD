@@ -4,25 +4,19 @@
 #include<wiringSerial.h>
 #include<string.h>
 #include<wiringPi.h>
-void  NMEA_STRING(int BAUD)
+#include<errno.h>
+char*  NMEA_STRIN(char* cpOutput)
 {
 
-
-//	char NMEA [83];
+	char NMEA [83];
 	int fd;
-	fd = serialOpen("/dev/serial0" , 9600);
 	
-	if(fd < 0){printf("fd not valid\n");}	
-	if(wiringPiSetup() < 0) {printf("setup failed\n");}
-	
-	for(int i = 0; i < 10; i++){
-	
-		printf("\nOut: %d",i);
-		
-		fflush(stdout);
-		serialPutchar(fd,i);
+	if((fd = serialOpen("/dev/serial0",38400)) < 0){
+
+		fprintf(stdout, "Could not open file fd.");
+
 	}
-	/*
+
 	if(serialDataAvail(fd) != -1)
 	{
 		for(int i=0; i<82; i++)
@@ -34,14 +28,10 @@ void  NMEA_STRING(int BAUD)
 
 	}
 	
-	*/
-//	char* cpOutput =(char *)malloc(sizeof(char)*83);
-//	cpOutput = NMEA;
+	//char* cpOutput =(char *)malloc(sizeof(char)*83);
+	cpOutput = NMEA;
 	
-	
-//	return cpOutput;
-	
-	
+	return cpOutput;
 
 }
 

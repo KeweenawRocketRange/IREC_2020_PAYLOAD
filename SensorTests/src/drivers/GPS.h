@@ -1,3 +1,3 @@
 
 
-void NMEA_STRING(int BAUD);
+char* NMEA_STRING(char* cpOutput);
