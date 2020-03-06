@@ -5,7 +5,7 @@
 #include<string.h>
 #include<wiringPi.h>
 #include<errno.h>
-char*  NMEA_STRIN(char* cpOutput)
+char*  NMEA_STRING(char* cpOutput)
 {
 
 	char NMEA [83];
