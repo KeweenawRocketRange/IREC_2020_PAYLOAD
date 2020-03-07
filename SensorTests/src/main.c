@@ -10,7 +10,7 @@ int main(){
 	setup(mpuAddr);
 
 	char* cpOut = ((char*)malloc(sizeof(char)*83));
-	for(int i = 0; i < 10; i++){
+	for(int i = 0; i < 100; i++){
 		
 		printf("%s", NMEA_STRING(cpOut));
 		//printf("Accel: %f\n", read_word_2c(0x3B)/16384.0); 

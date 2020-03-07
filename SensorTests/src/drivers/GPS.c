@@ -40,7 +40,7 @@ char*  NMEA_STRING(char* cpOutput)
  * Lat 18 - 26,28, Long 30 + 40, 42
  *
  */ 
-static nmeaParse(char* nmea)
+int nmeaParse(char* nmea)
 {
     regex_t regex;
     gpsCo = regcomp(&regex,"$GNGGA",0);
@@ -49,7 +49,7 @@ static nmeaParse(char* nmea)
     double Latitude;
     double Longitude;
     char lat = nmea[28];
-    char long = nmea[42];
+    char lon = nmea[42];
     
     if(strlen(nmea) >=82){
         if(gpsCo != 0)
@@ -67,7 +67,7 @@ static nmeaParse(char* nmea)
             strcat(Long,nmea[k]);                                                                                        
         }
         Longitude = Longitude((double)Long);
-        printf("%ld %s %ld %s\n", Latitude,lat,Longitude,long);
+        printf("%f %s %f %s\n", Latitude,lat,Longitude,lon);
 
 
     }
