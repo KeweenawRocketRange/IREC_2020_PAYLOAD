@@ -5,6 +5,7 @@
 #include<string.h>
 #include<wiringPi.h>
 #include<errno.h>
+#include<regex.h>
 char*  NMEA_STRING(char* cpOutput)
 {
 
@@ -33,6 +34,62 @@ char*  NMEA_STRING(char* cpOutput)
 	
 	return cpOutput;
 
+}
+/*
+ * checks if the string is propper length and is $GNGGA
+ * Lat 18 - 26,28, Long 30 + 40, 42
+ *
+ */ 
+static nmeaParse(char* nmea)
+{
+    regex_t regex;
+    gpsCo = regcomp(&regex,"$GNGGA",0);
+    char Lat[9];
+    char Long[10];
+    double Latitude;
+    double Longitude;
+    char lat = nmea[28];
+    char long = nmea[42];
+    
+    if(strlen(nmea) >=82){
+        if(gpsCo != 0)
+        {
+            return 0;
+        }
+        for(int j = 18;j<27;j++)
+        {
+            strcat(Lat,nmea[j]);
+        }
+        Latitude = Latitude((double)Lat);
+        
+        for(int k = 30;k<41;k++)   
+        {
+            strcat(Long,nmea[k]);                                                                                        
+        }
+        Longitude = Longitude((double)Long);
+        printf("%ld %s %ld %s\n", Latitude,lat,Longitude,long);
+
+
+    }
+    else
+    {
+        return 0;
+    }
+
+    return 1;
+
+}
+double Latitude(double latitude)
+{
+    int degrees = (int)(latitude/100);
+    latitude = degrees + ((latitude - (degrees * 100)) / 60);
+    return latitude;
+}
+double Longitude(double longitude)
+{
+    int degrees = (int)(longitude/100);
+    longitude = degrees + ((longitude - (degrees * 100)) / 60);
+    return longitude;
 }
 
 
