@@ -30,6 +30,8 @@ char*  NMEA_STRING(char* cpOutput)
 	}
 	
 	//char* cpOutput =(char *)malloc(sizeof(char)*83);
+
+
 	cpOutput = NMEA;
 	
 	return cpOutput;
@@ -38,35 +40,44 @@ char*  NMEA_STRING(char* cpOutput)
 /*
  * checks if the string is propper length and is $GNGGA
  * Lat 18 - 26,28, Long 30 + 40, 42
+ * $GPGGA,092750.000,5321.6802,N,00630.3372,W,1,8,1.03,61.7,M,55.2,M,,*76
  *
  */ 
 int nmeaParse(char* nmea)
 {
-    regex_t regex;
-    gpsCo = regcomp(&regex,"$GNGGA",0);
+    const char parse[2] = ",";
+    char *token;
+
+    regex_t regex; //maybe not needed
+    gpsCo = regcomp(&regex,"$GNGGA",0); //maybe not needed
     char Lat[9];
     char Long[10];
-    double Latitude;
-    double Longitude;
+    double latitude;
+    double longitude;
     char lat = nmea[28];
     char lon = nmea[42];
     
+
     if(strlen(nmea) >=82){
         if(gpsCo != 0)
         {
             return 0;
         }
-        for(int j = 18;j<27;j++)
-        {
-            strcat(Lat,nmea[j]);
-        }
-        Latitude = Latitude((double)Lat);
         
-        for(int k = 30;k<41;k++)   
+        for(int j = 0;j<3;j++)
         {
-            strcat(Long,nmea[k]);                                                                                        
+            token = strtok(nmea, parse);
         }
-        Longitude = Longitude((double)Long);
+        latitude = atof(token);
+
+        latitude = Latitude(latitude);
+        
+        for(int k = 0;k<2;k++)
+        {
+            token = strtok(nmea, parse);
+        }
+        longitude = atof(token);
+        longitude = Longitude(longitude);
         printf("%f %s %f %s\n", Latitude,lat,Longitude,lon);
 
 
