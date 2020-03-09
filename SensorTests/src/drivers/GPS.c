@@ -44,7 +44,7 @@ char*  NMEA_STRING(char* cpOutput)
 /*
  * checks if the string is propper length and is $GNGGA
  * Lat 18 - 26,28, Long 30 + 40, 42
- * $GPGGA,092750.000,5321.6802,N,00630.3372,W,1,8,1.03,61.7,M,55.2,M,,*76
+ * $GNGGA,092750.000,5321.6802,N,00630.3372,W,1,8,1.03,61.7,M,55.2,M,,*76
  *
  */ 
 void nmeaParse(char* nmea)
@@ -56,18 +56,20 @@ void nmeaParse(char* nmea)
     double longi;
     char *lat;
     char *lon;
-    token = strtok(nmea,parse);
-    token = strtok(NULL, parse);
-    lati = atof(strtok(NULL, parse));
+    if(strcmp((token = strtok(nmea,parse)),"$GNGGA")==0){
 
-    lati = Latitude(lati);
-    lat = strtok(NULL, parse);
+        token = strtok(nmea,parse);
+        token = strtok(NULL, parse);
+        lati = atof(strtok(NULL, parse));
 
-    longi = atof(strtok(NULL, parse));
-    longi = Longitude(longi);
-    lon = strtok(NULL, parse);
-    printf("%f %s %f %s\n", lati,lat,longi,lon);
+        lati = Latitude(lati);
+        lat = strtok(NULL, parse);
 
+        longi = atof(strtok(NULL, parse));
+        longi = Longitude(longi);
+        lon = strtok(NULL, parse);
+        printf("%f %s %f %s\n", lati,lat,longi,lon);
+    }
 }
 double Latitude(double latitude)
 {
