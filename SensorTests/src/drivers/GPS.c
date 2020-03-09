@@ -78,7 +78,7 @@ int nmeaParse(char* nmea)
         }
         longitude = atof(token);
         longitude = Longitude(longitude);
-        printf("%f %s %f %s\n", Latitude,lat,Longitude,lon);
+        printf("%f %s %f %s\n", latitude,lat,longitude,lon);
 
 
     }
