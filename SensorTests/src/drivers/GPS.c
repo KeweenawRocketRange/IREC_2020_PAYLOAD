@@ -53,16 +53,11 @@ int nmeaParse(char* nmea)
 
     double lati;
     double longi;
-    char lat[2];
-    char lon[2];
+    char *lat;
+    char *lon;
     
 
     if(strlen(nmea) >=82){
-        if(gpsCo != 0)
-        {
-            return 0;
-        }
-        
         for(int j = 0;j<3;j++)
         {
             token = strtok(nmea, parse);
@@ -71,13 +66,13 @@ int nmeaParse(char* nmea)
 
         lati = Latitude(lati);
         token = strtok(nmea, parse);
-        lat[0] = token;
+        lat = token;
         token = strtok(nmea, parse);
         
         longi = atof(token);
         longi = Longitude(longi);
         token = strtok(nmea, parse);
-        long[0] = token;
+        long = token;
         printf("%f %s %f %s\n", lati,lat,longi,lon);
 
 
