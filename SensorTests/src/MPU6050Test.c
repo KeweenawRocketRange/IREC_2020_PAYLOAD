@@ -1,4 +1,4 @@
-/**************************
+/*************************
  * Keweenaw Rocket Range
  * IREC2020 Payload Electrical
  * MPU6050 Test
