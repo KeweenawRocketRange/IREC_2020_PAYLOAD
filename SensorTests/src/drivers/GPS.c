@@ -72,7 +72,7 @@ int nmeaParse(char* nmea)
         longi = atof(token);
         longi = Longitude(longi);
         token = strtok(nmea, parse);
-        long = token;
+        lon = token;
         printf("%f %s %f %s\n", lati,lat,longi,lon);
 
 
