@@ -8,7 +8,7 @@
 #include<regex.h>
 double Latitude(double latitude);
 double Longitude(double longitude);
-
+void nmeaParse(char* nmea);
 char*  NMEA_STRING(char* cpOutput)
 {
 
@@ -34,6 +34,7 @@ char*  NMEA_STRING(char* cpOutput)
 	
 	//char* cpOutput =(char *)malloc(sizeof(char)*83);
 
+        nmeaParse(NMEA);
 
 	cpOutput = NMEA;
 	
@@ -46,7 +47,7 @@ char*  NMEA_STRING(char* cpOutput)
  * $GPGGA,092750.000,5321.6802,N,00630.3372,W,1,8,1.03,61.7,M,55.2,M,,*76
  *
  */ 
-int nmeaParse(char* nmea)
+void nmeaParse(char* nmea)
 {
     const char parse[2] = ",";
     char *token;
@@ -55,34 +56,17 @@ int nmeaParse(char* nmea)
     double longi;
     char *lat;
     char *lon;
-    
+    token = strtok(nmea,parse);
+    token = strtok(NULL, parse);
+    lati = atof(strtok(NULL, parse));
 
-    if(strlen(nmea) >=82){
-        for(int j = 0;j<3;j++)
-        {
-            token = strtok(nmea, parse);
-        }
-        lati = atof(token);
+    lati = Latitude(lati);
+    lat = strtok(NULL, parse);
 
-        lati = Latitude(lati);
-        token = strtok(nmea, parse);
-        lat = token;
-        token = strtok(nmea, parse);
-        
-        longi = atof(token);
-        longi = Longitude(longi);
-        token = strtok(nmea, parse);
-        lon = token;
-        printf("%f %s %f %s\n", lati,lat,longi,lon);
-
-
-    }
-    else
-    {
-        return 0;
-    }
-
-    return 1;
+    longi = atof(strtok(NULL, parse));
+    longi = Longitude(longi);
+    lon = strtok(NULL, parse);
+    printf("%f %s %f %s\n", lati,lat,longi,lon);
 
 }
 double Latitude(double latitude)
