@@ -6,6 +6,9 @@
 #include<wiringPi.h>
 #include<errno.h>
 #include<regex.h>
+double Latitude(double latitude);
+double Longitude(double longitude);
+
 char*  NMEA_STRING(char* cpOutput)
 {
 
@@ -48,14 +51,10 @@ int nmeaParse(char* nmea)
     const char parse[2] = ",";
     char *token;
 
-    regex_t regex; //maybe not needed
-    gpsCo = regcomp(&regex,"$GNGGA",0); //maybe not needed
-    char Lat[9];
-    char Long[10];
-    double latitude;
-    double longitude;
-    char lat = nmea[28];
-    char lon = nmea[42];
+    double lati;
+    double longi;
+    char lat[2];
+    char lon[2];
     
 
     if(strlen(nmea) >=82){
@@ -68,17 +67,18 @@ int nmeaParse(char* nmea)
         {
             token = strtok(nmea, parse);
         }
-        latitude = atof(token);
+        lati = atof(token);
 
-        latitude = Latitude(latitude);
+        lati = Latitude(lati);
+        token = strtok(nmea, parse);
+        lat = token;
+        token = strtok(nmea, parse);
         
-        for(int k = 0;k<2;k++)
-        {
-            token = strtok(nmea, parse);
-        }
-        longitude = atof(token);
-        longitude = Longitude(longitude);
-        printf("%f %s %f %s\n", latitude,lat,longitude,lon);
+        longi = atof(token);
+        longi = Longitude(longi);
+        token = strtok(nmea, parse);
+        long = token;
+        printf("%ld %s %ld %s\n", lati,lat,longi,lon);
 
 
     }
