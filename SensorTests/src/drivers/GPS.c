@@ -14,7 +14,7 @@ char*  NMEA_STRING(char* cpOutput)
 
 	char NMEA [83];
 	int fd;
-	
+
 	if((fd = serialOpen("/dev/serial0",38400)) < 0){
 
 		fprintf(stdout, "Could not open file fd.");
@@ -31,13 +31,13 @@ char*  NMEA_STRING(char* cpOutput)
 		NMEA[82] = '\0';
 
 	}
-	
+
 	//char* cpOutput =(char *)malloc(sizeof(char)*83);
 
         nmeaParse(NMEA);
 
 	cpOutput = NMEA;
-	
+
 	return cpOutput;
 
 }
@@ -46,7 +46,7 @@ char*  NMEA_STRING(char* cpOutput)
  * Lat 18 - 26,28, Long 30 + 40, 42
  * $GNGGA,092750.000,5321.6802,N,00630.3372,W,1,8,1.03,61.7,M,55.2,M,,*76
  *
- */ 
+ */
 void nmeaParse(char* nmea)
 {
     const char parse[2] = ",";
@@ -101,10 +101,3 @@ double Longitude(double longitude)
     longitude = degrees + ((longitude - (degrees * 100)) / 60);
     return longitude;
 }
-
-
-
-
-
-
-
