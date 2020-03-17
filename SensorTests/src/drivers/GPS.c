@@ -77,13 +77,13 @@ void nmeaParse(char* nmea)
         boolean = 0;
     }
 
-    printf("%d %s\n",boolean,check1);
+    printf("Boolean: %d\n Check1: %s\n",boolean,check1);
     if(boolean==1){
 
         token = strtok(nmea,parse);
-				printf("%s",token);
+				printf("Token: %s\n",token);
         token = strtok(NULL, parse);
-				printf("%s",token);
+				printf("Token: %s\n",token);
         lati = atof(strtok(NULL, parse));
 
         lati = Latitude(lati);
