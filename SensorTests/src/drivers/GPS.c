@@ -37,7 +37,7 @@ char*  NMEA_STRING(char* cpOutput)
 
 	cpOutput = NMEA;
 
-  nmeaParse(cpOutput);
+  //nmeaParse(cpOutput);
 
 	printf("Raw Output:\n%s",cpOutput);
 	return cpOutput;
