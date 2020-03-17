@@ -60,7 +60,7 @@ void nmeaParse(char* nmea)
     char *check1;
     char check[] = "$GNGGA";
     check1 = strstr(nmea,check);
-    
+
     if(check1 != NULL){
         boolean = 1;
     }
@@ -68,8 +68,8 @@ void nmeaParse(char* nmea)
     {
         boolean = 0;
     }
-    
-    printf("%d %s\n",boolean,check1);
+
+    //printf("%d %s\n",boolean,check1);
     if(boolean==1){
 
         token = strtok(nmea,parse);
@@ -84,7 +84,7 @@ void nmeaParse(char* nmea)
         lon = strtok(NULL, parse);
         printf("%f %s %f %s\n", lati,lat,longi,lon);
     }else{
-	printf("String compare failed\n");
+	//printf("String compare failed\n");
     }
 }
 double Latitude(double latitude)
