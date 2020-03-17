@@ -69,7 +69,7 @@ void nmeaParse(char* nmea)
         boolean = 0;
     }
 
-    //printf("%d %s\n",boolean,check1);
+    printf("%d %s\n",boolean,check1);
     if(boolean==1){
 
         token = strtok(nmea,parse);
