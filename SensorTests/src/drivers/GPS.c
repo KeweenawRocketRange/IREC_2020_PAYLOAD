@@ -61,7 +61,7 @@ void nmeaParse(char* nmea)
     char check[] = "$GNGGA";
     check1 = strstr(nmea,check);
     
-    if(strcmp(check1,check) == 0){
+    if(check1 != NULL){
         boolean = 1;
     }
     else
