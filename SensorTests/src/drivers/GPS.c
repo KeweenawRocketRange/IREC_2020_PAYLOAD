@@ -39,7 +39,7 @@ char*  NMEA_STRING(char* cpOutput)
 
   nmeaParse(cpOutput);
 
-	//printf("%s",cpOutput);
+	printf("Raw Output:\n%s",cpOutput);
 	return cpOutput;
 
 }
