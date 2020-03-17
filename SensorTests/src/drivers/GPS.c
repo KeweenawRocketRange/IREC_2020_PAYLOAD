@@ -57,20 +57,18 @@ void nmeaParse(char* nmea)
     char *lat;
     char *lon;
     int boolean = 0;
-    char check1[6];
+    char *check1;
     char check[] = "$GNGGA";
-    for (int j = 0;j<6;j++){
-	    check1[j] = nmea[j];
+    check1 = strstr(nmea,check);
+    
+    if(strcmp(check1,check) == 0){
+        boolean = 1;
     }
-    for(int i = 0; i<6;i++){
-	if(strcmp(check1,check) == 0){
-		boolean = 1;
-	}
-	else
-	{
-		boolean = 0;
-	}
+    else
+    {
+        boolean = 0;
     }
+    
     printf("%d %s\n",boolean,check1);
     if(boolean==1){
 
