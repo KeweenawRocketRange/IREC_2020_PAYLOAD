@@ -34,11 +34,19 @@ char*  NMEA_STRING(char* cpOutput)
 
 	//char* cpOutput =(char *)malloc(sizeof(char)*83);
 
-        nmeaParse(NMEA);
 
 	cpOutput = NMEA;
 
+  nmeaParse(cpOutput);
+
+	//printf("%s",cpOutput);
 	return cpOutput;
+
+}
+
+
+void getCoord(char* nmea){
+
 
 }
 /*
