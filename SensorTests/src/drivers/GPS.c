@@ -25,6 +25,7 @@ char*  NMEA_STRING(char* cpOutput)
 
 	char* dollar = "$";
 
+		printf("Char available(1): %d\n",serialDataAvail(fd));
 	if(serialDataAvail(fd) > 0)
 	{
 		printf("Char available(1): %d\n",serialDataAvail(fd));
