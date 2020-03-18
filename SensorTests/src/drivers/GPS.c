@@ -23,6 +23,7 @@ char*  NMEA_STRING(char* cpOutput)
 
 	if(serialDataAvail(fd) != -1)
 	{
+		printf("d\n",serialDataAvail(fd));
 		for(int i=0; i<82; i++)
 		{
 			int val = serialGetchar(fd);
