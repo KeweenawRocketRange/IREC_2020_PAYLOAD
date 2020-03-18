@@ -23,7 +23,7 @@ char*  NMEA_STRING(char* cpOutput)
 
 	}
 
-	char* start = (char)serialGetChar(fd);
+	char* start = (char)serialGetchar(fd);
 	char* dollar = "$";
 	if((bufferSize = serialDataAvail(fd)) != -1 && strcmp(start,dollar) == 0)
 	{
