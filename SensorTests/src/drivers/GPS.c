@@ -15,16 +15,19 @@ char*  NMEA_STRING(char* cpOutput)
 	char NMEA [83];
 	int fd;
 
+	int bufferSize = 0;
+
 	if((fd = serialOpen("/dev/serial0",38400)) < 0){
 
 		fprintf(stdout, "Could not open file fd.");
 
 	}
 
-	if(serialDataAvail(fd) != -1)
+	if((bufferSize = serialDataAvail(fd)) != -1)
 	{
+
 		printf("Char available: %d\n",serialDataAvail(fd));
-		for(int i=0; i<82; i++)
+		for(int i=0; i<bufferSize+1; i++)
 		{
 			int val = serialGetchar(fd);
 			NMEA[i] = (char)val;
