@@ -33,7 +33,7 @@ char*  NMEA_STRING(char* cpOutput)
 		char* start = (char)serialGetchar(fd);
 		printf("First char: %s\n",start);
 
-		if(strcmp(start,dollar) == 0){
+		if(strcmp(start,dollar) > 0){
 		for(int i=0; i<bufferSize+1; i++)
 		{
 			int val = serialGetchar(fd);
