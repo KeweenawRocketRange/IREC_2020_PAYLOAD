@@ -25,8 +25,9 @@ char*  NMEA_STRING(char* cpOutput)
 
 	if((bufferSize = serialDataAvail(fd)) != -1)
 	{
+		printf("Char available(1): %d\n",serialDataAvail(fd));
 
-		printf("Char available: %d\n",serialDataAvail(fd));
+		printf("Char available(2): %d\n",serialDataAvail(fd));
 		for(int i=0; i<bufferSize+1; i++)
 		{
 			int val = serialGetchar(fd);
