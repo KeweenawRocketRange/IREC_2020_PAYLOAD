@@ -36,6 +36,8 @@ char*  NMEA_STRING(char* cpOutput)
 
 		char start = (char)serialGetchar(fd);
 
+		const char* s1 = start;
+
 		printf("First char: %s\n",start);
 
 		if(strcmp(start,dollar) == 0){
