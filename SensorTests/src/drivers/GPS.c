@@ -41,7 +41,7 @@ char*  NMEA_STRING(char* cpOutput)
 		NMEA[82] = '\0';
 
 	}
-
+}
 	//char* cpOutput =(char *)malloc(sizeof(char)*83);
 
 
