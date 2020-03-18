@@ -31,7 +31,11 @@ char*  NMEA_STRING(char* cpOutput)
 		printf("Char available(1): %d\n",serialDataAvail(fd));
 		//printf("Char available(2): %d\n",serialDataAvail(fd));
 		bufferSize = serialDataAvail(fd);
-		char* start = (char)serialGetchar(fd);
+
+		printf("BufferSize: %d\n",bufferSize);
+
+		char start = (char)serialGetchar(fd);
+
 		printf("First char: %s\n",start);
 
 		if(strcmp(start,dollar) == 0){
