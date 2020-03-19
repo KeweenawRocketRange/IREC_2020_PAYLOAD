@@ -1,7 +1,7 @@
 /*
   This is a revision of GPS.c
 
-*
+*/
 
 #include<stdio.h>
 #include<stdlib.h>
