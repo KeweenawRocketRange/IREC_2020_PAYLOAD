@@ -8,8 +8,8 @@
 #include<wiringPiI2C.h>
 #include<wiringPi.h>
 #include<math.h>
-#include"~/MPU6050.h"
 
+#include"/home/pi/C_Files/KRR/IREC_2020_Payload/SensorTests/src/drivers/MPU6050.h"
 int fd;
 int acclX;
 
