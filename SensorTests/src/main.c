@@ -14,7 +14,7 @@
 
 int main(){
 
-		MPU6050* mpu;
+		MPU6050 mpu;
 		float accel = 0;
 		getCoord();
 		setup(MPUADDR);
@@ -22,9 +22,9 @@ int main(){
 
 while(1){
 
-	*mpu = read_word_2c(ACCEL_X);
+	mpu = read_word_2c(ACCEL_X);
 
-	printf("ACCEL_X: %f\n",*mpu->acX);
+	printf("ACCEL_X: %f\n",mpu.acX);
 
 }
 
