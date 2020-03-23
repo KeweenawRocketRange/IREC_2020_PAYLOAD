@@ -1,7 +1,6 @@
 //Header file for MPU6050
 //
 int setup(int MPUADDR);
-int read_word_2c(int addr);
 
 #define ACCEL_X 0x3B
 #define ACCEL_Y 0x3D
@@ -21,3 +20,6 @@ typedef struct{
   float gyZ;
 
 }MPU6050;
+
+
+MPU6050 read_word_2c(int addr);

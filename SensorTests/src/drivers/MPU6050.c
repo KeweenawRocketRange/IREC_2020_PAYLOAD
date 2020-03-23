@@ -24,7 +24,7 @@ int setup(int  MPUADDR){
 
 }
 
-MPU6050* read_word_2c(int addr){
+MPU6050 read_word_2c(int addr){
 
 	int val;
 	val = wiringPiI2CReadReg8(fd, addr);
