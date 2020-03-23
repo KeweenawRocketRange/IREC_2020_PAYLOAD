@@ -27,8 +27,8 @@ int read_word_2c(int addr){
 	val = val << 8;
 	val += wiringPiI2CReadReg8(fd, addr+1);
 
-	if(val >= 0x8000)
-		val = -(65536 - val);
+	//if(val >= 0x8000)
+	//	val = -(65536 - val);
 
 	return val;
 
