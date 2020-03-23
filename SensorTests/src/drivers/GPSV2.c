@@ -62,23 +62,21 @@ double Longitude(double longitude)
         int degrees = (int)(longitude/100);                                                                                                                                                                  longitude = degrees + ((longitude - (degrees * 100)) / 60);                                                                                                                                          return longitude;
 }
 
+typedef struct{
+    double latitude;
+    double longitude;
 
+    char lat;
+    char lon;
+
+}GPS_COORD;
 // $GNRMC,020140.00,A,4635.03299,N,09053.51484,W,0.053,,230320,,,A,V*01
 void nmeaParse(int length, char nmea[])
 {
     const char parse[2] = ",";
     char *token;
 
-  typedef struct{
-
-  double latitude;
-  double longitude;
-  char lat;
-  char lon;
-
-	}GPS_COORD;
-
-		GPS_COORD data;
+    GPS_COORD data;
 
     token = strtok(nmea,parse);
     printf("Token: %s\n",token);
