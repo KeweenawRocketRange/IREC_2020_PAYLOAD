@@ -8,6 +8,7 @@
 #include<wiringPiI2C.h>
 #include<wiringPi.h>
 #include<math.h>
+#include"~/MPU6050.h"
 
 int fd;
 int acclX;
