@@ -45,7 +45,11 @@ void NMEA_STRING()
 
 }
 
+void interruptTest(){
 
+	printf("Interrupt Triggered\n");
+
+}
 
 void getCoord(){
 
@@ -54,7 +58,7 @@ void getCoord(){
     fprintf(stderr, "Failed to setup wiringPi.%s"\n",strerror(errno) );
 
 		//Sets up function interrupt
-    if( wiringPiISR(PPS,INT_EDGE_FALLING, &NMEA_STRING()) > 0){
+    if( wiringPiISR(PPS,INT_EDGE_FALLING, &interruptTest()) > 0){
       fprintf(stderr, "Unable To setup ISR: %s\n",strerror(errno));
     }
 }
