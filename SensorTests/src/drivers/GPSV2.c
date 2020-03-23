@@ -37,16 +37,58 @@ void NMEA_STRING()
 			NMEA[i] = (char)val;
 		}
 		NMEA[66] = '\0';
-
-}
-
-serialFlush(fd);
+        }
+        
+        
+        if(strstr(NMEA,"GNRMC") != NULL){
+            printf("coords\n");
+            
+        }
+        serialFlush(fd);
 
 	//char* cpOutput =(char *)malloc(sizeof(char)*83);
   //nmeaParse(cpOutput);
 	printf("Raw Output:\n%s\n",NMEA);
 
 }
+
+
+
+// $GNRMC,020140.00,A,4635.03299,N,09053.51484,W,0.053,,230320,,,A,V*01
+void nmeaParse(int length, char nmea[])
+{
+    const char parse[2] = ",";
+    char *token;
+
+    double lati;
+    double longi;
+    char *lat;
+    char *lon;
+
+    token = strtok(nmea,parse);
+    printf("Token: %s\n",token);
+    token = strtok(NULL, parse);
+    printf("Token: %s\n",token);
+    strtok(NULL, parse);
+    lati = atof(strtok(NULL, parse));
+
+
+    lati = Latitude(lati);
+    lat = strtok(NULL, parse);
+
+
+    longi = atof(strtok(NULL, parse));
+    longi = Longitude(longi);
+    lon = strtok(NULL, parse);
+    printf("%f %s %f %s\n", lati,lat,longi,lon);
+    //printf("String compare failed\n");
+
+}
+
+
+
+
+
 
 void interruptTest(){
 
