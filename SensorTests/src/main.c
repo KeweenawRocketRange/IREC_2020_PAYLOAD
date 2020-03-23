@@ -14,13 +14,17 @@
 
 int main(){
 
+		float accel = 0;
 		getCoord();
-
+		setup(MPUADDR);
 
 
 while(1){
 
+	accel = read_word_2c(ACCEL_X);
 
+	printf("ACCEL_X: %f\n",accel);
+	
 }
 
 	return 0;
