@@ -37,7 +37,11 @@ void NMEA_STRING()
 			NMEA[i] = (char)val;
 		}
 		NMEA[82] = '\0';
+
 }
+
+void serialFlush (fd) ;
+
 	//char* cpOutput =(char *)malloc(sizeof(char)*83);
   //nmeaParse(cpOutput);
 	printf("Raw Output:\n%s\n",NMEA);
