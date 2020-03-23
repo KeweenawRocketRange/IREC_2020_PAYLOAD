@@ -22,7 +22,7 @@ void NMEA_STRING()
 	int fd;
 
 	//Size of typical NMEA message ( 83 characters )
-	int bufferSize = 83;
+	int bufferSize = 67;
 
 	if((fd = serialOpen("/dev/serial0",38400)) < 0){
 		fprintf(stdout, "Could not open file fd.");
@@ -36,7 +36,7 @@ void NMEA_STRING()
 			int val = serialGetchar(fd);
 			NMEA[i] = (char)val;
 		}
-		NMEA[82] = '\0';
+		NMEA[66] = '\0';
 
 }
 
