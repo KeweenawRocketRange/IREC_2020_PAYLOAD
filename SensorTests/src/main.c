@@ -8,7 +8,10 @@ int main(){
 
 		getCoord();
 
-while(1){};
+while(1){
+
+
+}
 
 	return 0;
 }
