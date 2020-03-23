@@ -69,6 +69,15 @@ void nmeaParse(int length, char nmea[])
     const char parse[2] = ",";
     char *token;
 
+  typedef struct{
+
+  double latitude;
+  double longitude;
+  char lat;
+  char lon;
+
+	}GPS_COORD;
+
 		GPS_COORD data;
 
     token = strtok(nmea,parse);
