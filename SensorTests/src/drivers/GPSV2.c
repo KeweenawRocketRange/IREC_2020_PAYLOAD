@@ -71,7 +71,7 @@ typedef struct{
 
 }GPS_COORD;
 // $GNRMC,020140.00,A,4635.03299,N,09053.51484,W,0.053,,230320,,,A,V*01
-void nmeaParse(int length, char[] nmea)
+void nmeaParse(int length, char nmea[])
 {
     const char parse[2] = ",";
     char *token;
