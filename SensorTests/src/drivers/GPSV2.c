@@ -57,7 +57,7 @@ void getCoord(){
     fprintf(stderr, "Failed to setup wiringPi.%s",strerror(errno) );
 
 		//Sets up function interrupt
-    if( wiringPiISR(PPS,INT_EDGE_RISING, &interruptTest()) > 0){
+    if( wiringPiISR(PPS,INT_EDGE_RISING, interruptTest()) > 0){
       fprintf(stderr, "Unable To setup ISR: %s\n",strerror(errno));
     }
 }
