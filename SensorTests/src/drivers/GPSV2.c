@@ -12,6 +12,8 @@
 #include<errno.h>
 #include<regex.h>
 
+#include"/home/pi/C_Files/KRR/IREC_2020_Payload/SensorTests/src/drivers/GPSV2.h"
+
 void NMEA_STRING()
 {
 
