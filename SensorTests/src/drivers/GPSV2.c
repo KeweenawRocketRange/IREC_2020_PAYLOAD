@@ -12,16 +12,11 @@
 #include<errno.h>
 #include<regex.h>
 
-//GPIO 0, pin 11
-#define PPS 0
-
 void NMEA_STRING()
 {
 
 	char NMEA [83];
 	int fd;
-
-	//Size of typical NMEA message ( 83 characters )
 	int bufferSize = 67;
 
 	if((fd = serialOpen("/dev/serial0",38400)) < 0){
@@ -61,14 +56,6 @@ double Longitude(double longitude)
         int degrees = (int)(longitude/100);                                                                                                                                                                  longitude = degrees + ((longitude - (degrees * 100)) / 60);                                                                                                                                          return longitude;
 }
 
-typedef struct{
-    double latitude;
-    double longitude;
-
-    char* lat;
-    char* lon;
-
-}GPS_COORD;
 // $GNRMC,020140.00,A,4635.03299,N,09053.51484,W,0.053,,230320,,,A,V*01
 void nmeaParse( char nmea[])
 {
