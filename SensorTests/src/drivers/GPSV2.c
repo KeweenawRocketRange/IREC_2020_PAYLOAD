@@ -66,8 +66,8 @@ typedef struct{
     double latitude;
     double longitude;
 
-    char lat;
-    char lon;
+    char* lat;
+    char* lon;
 
 }GPS_COORD;
 // $GNRMC,020140.00,A,4635.03299,N,09053.51484,W,0.053,,230320,,,A,V*01
@@ -86,11 +86,11 @@ void nmeaParse(int length, char nmea[])
 
 
     data.latitude = Latitude(atof(strtok(NULL,parse)));
-    data.lat = strtok(NULL, parse);
+    data->lat = strtok(NULL, parse);
 
 
     data.longitude = Longitude(atof(strtok(NULL,parse)));
-    data.lon = strtok(NULL, parse);
+    data->lon = strtok(NULL, parse);
     printf("%f %s %f %s\n", data.latitude,data.lat,data.longitude,data.lon);
     //printf("String compare failed\n");
 
