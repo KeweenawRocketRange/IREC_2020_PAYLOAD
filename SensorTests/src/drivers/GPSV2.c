@@ -53,6 +53,15 @@ void NMEA_STRING()
 }
 
 
+double Latitude(double latitude)
+{
+        int degrees = (int)(latitude/100);                                                                                                                                                                   latitude = degrees + ((latitude - (degrees * 100)) / 60);                                                                                                                                            return latitude;
+}
+double Longitude(double longitude)
+{
+        int degrees = (int)(longitude/100);                                                                                                                                                                  longitude = degrees + ((longitude - (degrees * 100)) / 60);                                                                                                                                          return longitude;
+}
+
 
 // $GNRMC,020140.00,A,4635.03299,N,09053.51484,W,0.053,,230320,,,A,V*01
 void nmeaParse(int length, char nmea[])
@@ -84,6 +93,7 @@ void nmeaParse(int length, char nmea[])
     //printf("String compare failed\n");
 
 }
+
 
 
 
