@@ -1,12 +1,8 @@
-/*************************
- * Keweenaw Rocket Range
- * IREC2020 Payload Electrical
- * MPU6050 Test
- * Author - Erik Van Horn
- *
- * 2/24/2020
- *
- * ************************/
+/***********************************************
+* MPU6050 Driver
+* Author - Erik Van Horn
+* Keweenaw Rocket Range - IREC_2020_Payload
+***********************************************/
 
 #include<stdio.h>
 #include<wiringPiI2C.h>
@@ -24,26 +20,16 @@ int setup(int  MPUADDR){
 	return 0;
 
 }
+
 int read_word_2c(int addr){
 	int val;
 	val = wiringPiI2CReadReg8(fd, addr);
 	val = val << 8;
 	val += wiringPiI2CReadReg8(fd, addr+1);
-	
+
 	if(val >= 0x8000)
 		val = -(65536 - val);
 
 	return val;
 
 }
-
-
-
-
-
-
-
-
-
-
-
