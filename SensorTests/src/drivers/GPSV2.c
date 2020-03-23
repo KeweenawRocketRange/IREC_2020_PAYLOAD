@@ -39,7 +39,6 @@ void NMEA_STRING()
 		NMEA[66] = '\0';
         }
 
-
         if(strstr(NMEA,"GNRMC") != NULL){
             printf("coords\n");
 						nmeaParse(bufferSize,NMEA);
@@ -96,12 +95,6 @@ void nmeaParse(int length, char nmea[])
 
 }
 
-
-
-
-
-
-
 void interruptTest(){
 
 	printf("Interrupt Triggered\n");
@@ -114,7 +107,8 @@ void getCoord(){
   if(wiringPiSetup() < 0){
     fprintf(stderr, "Failed to setup wiringPi.%s",strerror(errno) );
 	}
-		//Sets up function interrupt
+		// Sets up interrupt on Pi 0 w pin 11 on rising INT_EDGE_RISING
+		// If the interrupt is triggered, NMEA_STRING will be called.
     if( wiringPiISR(PPS,INT_EDGE_RISING, &NMEA_STRING) > 0){
       fprintf(stderr, "Unable To setup ISR: %s\n",strerror(errno));
     }
