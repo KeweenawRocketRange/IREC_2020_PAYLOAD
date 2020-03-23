@@ -11,7 +11,7 @@ int read_word_2c(int addr);
 #define GYRO_Z  0x47;
 
 
-typdef struct MPU6050{
+typdef struct {
 
   float acX;
   float acY;
@@ -20,4 +20,4 @@ typdef struct MPU6050{
   float gyY;
   float gyZ;
 
-};
+}MPU6050;
