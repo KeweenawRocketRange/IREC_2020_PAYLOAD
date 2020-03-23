@@ -57,9 +57,9 @@ void interruptTest(){
 void getCoord(){
 
 	//Sets up wiringPi
-  if(wiringPiSetup() < 0)
+  if(wiringPiSetup() < 0){
     fprintf(stderr, "Failed to setup wiringPi.%s",strerror(errno) );
-
+	}
 		//Sets up function interrupt
     if( wiringPiISR(PPS,INT_EDGE_RISING, &NMEA_STRING) > 0){
       fprintf(stderr, "Unable To setup ISR: %s\n",strerror(errno));
