@@ -11,7 +11,7 @@ int read_word_2c(int addr);
 #define GYRO_Z  0x47
 
 
-typdef struct {
+typedef struct{
 
   float acX;
   float acY;
