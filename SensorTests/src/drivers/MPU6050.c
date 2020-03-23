@@ -12,6 +12,8 @@
 int fd;
 int acclX;
 
+MPU6050 mpu6050;
+
 int setup(int  MPUADDR){
 
 	fd = wiringPiI2CSetup (MPUADDR);
@@ -21,15 +23,17 @@ int setup(int  MPUADDR){
 
 }
 
-int read_word_2c(int addr){
+MPU6050* read_word_2c(int addr){
+
 	int val;
 	val = wiringPiI2CReadReg8(fd, addr);
 	val = val << 8;
 	val += wiringPiI2CReadReg8(fd, addr+1);
+	mpu6050.acX = val/16384.0;
 
 	//if(val >= 0x8000)
 	//	val = -(65536 - val);
 
-	return val;
+	return mpu6050;
 
 }
