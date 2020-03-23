@@ -69,27 +69,22 @@ void nmeaParse(int length, char nmea[])
     const char parse[2] = ",";
     char *token;
 
-    double lati;
-    double longi;
-    char *lat;
-    char *lon;
+		GPS_COORD data;
 
     token = strtok(nmea,parse);
     printf("Token: %s\n",token);
     token = strtok(NULL, parse);
     printf("Token: %s\n",token);
     strtok(NULL, parse);
-    lati = atof(strtok(NULL, parse));
 
 
-    lati = Latitude(lati);
-    lat = strtok(NULL, parse);
+    data.latitude = Latitude(atof(strtok(NULL,parse)));
+    data.lat = strtok(NULL, parse);
 
 
-    longi = atof(strtok(NULL, parse));
-    longi = Longitude(longi);
-    lon = strtok(NULL, parse);
-    printf("%f %s %f %s\n", lati,lat,longi,lon);
+    data.longitude = Longitude(atof(strtok(NULL,parse)));
+    data.lon = strtok(NULL, parse);
+    printf("%f %s %f %s\n", data.latitude,data.lat,data.longitude,data.lon);
     //printf("String compare failed\n");
 
 }
