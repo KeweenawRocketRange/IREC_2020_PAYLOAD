@@ -28,7 +28,6 @@ void NMEA_STRING()
 		fprintf(stdout, "Could not open file fd.");
 	}
 
-serialFlush(fd) ;
 	//If char available to be read, returns the # of available characters
 	if(serialDataAvail(fd) > 0){
 
