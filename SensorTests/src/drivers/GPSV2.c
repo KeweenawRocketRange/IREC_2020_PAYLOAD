@@ -39,7 +39,6 @@ void NMEA_STRING()
 		NMEA[82] = '\0';
 }
 	//char* cpOutput =(char *)malloc(sizeof(char)*83);
-	cpOutput = NMEA;
   //nmeaParse(cpOutput);
 	printf("Raw Output:\n%s\n",NMEA);
 
