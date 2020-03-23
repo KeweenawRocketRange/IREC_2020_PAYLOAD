@@ -38,11 +38,11 @@ void NMEA_STRING()
 		}
 		NMEA[66] = '\0';
         }
-        
-        
+
+
         if(strstr(NMEA,"GNRMC") != NULL){
             printf("coords\n");
-            
+						nmeaParse(67,NMEA);
         }
         serialFlush(fd);
 
